@@ -4,7 +4,7 @@ body
 a
   color #00B7FF
 
-#menu
+#header-menu
   position fixed
   width 100%
   top 0
@@ -12,46 +12,73 @@ a
   right 0
   display block
 
-#header-container
-  padding 16px 60px
-  display block
-
-  #bar-left-menu
-    position absolute
+  #header-container
+    padding 16px 60px
     display block
-    width 26px
-    height 20px
-    margin-top 14px
-    cursor pointer
-    overflow hidden
 
-    #bars
-      background black
-      position relative
-      width 100%
-      height 0.2em
-      display block
-      margin-top 9px
-
-    #bars::before, #bars::after
-      background black
-      width 100%
-      height 0.2em
+    #bar-left-menu
       position absolute
-      left 0
-      content ''
+      display block
+      width 26px
+      height 20px
+      margin-top 14px
+      cursor pointer
+      overflow hidden
 
-    #bars::before
-      top -7px
+      #bars
+        background black
+        position relative
+        width 100%
+        height 0.2em
+        display block
+        margin-top 9px
 
-    #bars::after
-      top 7px
+      #bars::before, #bars::after
+        background black
+        width 100%
+        height 0.2em
+        position absolute
+        left 0
+        content ''
 
-  #title
-    text-align center
-    font-size 40px
+      #bars::before
+        top -7px
 
-  #bar-right-menu
-    float right
-    margin-top -40px
-    cursor pointer
+      #bars::after
+        top 7px
+
+    #title
+      text-align center
+      font-size 40px
+
+    #bar-right-menu
+      float right
+      margin-top -40px
+      cursor pointer
+
+#container
+  margin-left auto
+  margin-right auto
+  padding-top 80px
+  width 1145px
+
+  #content
+    float left
+    display block
+    font-size 0
+
+    div
+      font-size 21px
+
+.thread
+  background indianred
+  width 229px
+  height 229px
+  display inline-block
+
+  span
+    position absolute
+    bottom 30px
+    word-break break-all
+    display inline
+    width 229px
