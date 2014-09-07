@@ -1,0 +1,49 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+#menu {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+}
+#header-container {
+  padding: 32px 60px;
+  display: block;
+}
+#bar-left-menu {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  overflow: hidden;
+}
+#bars {
+  background: #6a1be2;
+  position: relative;
+  width: 100%;
+  height: 0.2em;
+  display: block;
+  margin-top: 9px;
+}
+#bars::before,
+#bars::after {
+  background: #6a1be2;
+  width: 100%;
+  height: 0.2em;
+  position: absolute;
+  left: 0;
+  content: '';
+}
+#bars::before {
+  top: -7px;
+}
+#bars::after {
+  top: 7px;
+}
