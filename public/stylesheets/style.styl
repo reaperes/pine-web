@@ -13,35 +13,41 @@ a
   display block
 
 #header-container
-  padding 32px 60px
+  padding 16px 60px
   display block
 
-#bar-left-menu
-  position relative
-  display block
-  width 26px
-  height 20px
-  cursor pointer
-  overflow hidden
+  #bar-left-menu
+    position absolute
+    display block
+    width 26px
+    height 20px
+    margin-top 14px
+    cursor pointer
+    overflow hidden
 
-#bars
-  background #6a1be2
-  position relative
-  width 100%
-  height 0.2em
-  display block
-  margin-top 9px
+    #bars
+      background #6a1be2
+      position relative
+      width 100%
+      height 0.2em
+      display block
+      margin-top 9px
 
-#bars::before, #bars::after
-  background #6a1be2
-  width 100%
-  height 0.2em
-  position absolute
-  left 0
-  content ''
+    #bars::before, #bars::after
+      background #6a1be2
+      width 100%
+      height 0.2em
+      position absolute
+      left 0
+      content ''
 
-#bars::before
-  top -7px
+    #bars::before
+      top -7px
 
-#bars::after
-  top 7px
+    #bars::after
+      top 7px
+
+  #title
+    text-align center
+    font-size 40px
+
