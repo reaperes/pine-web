@@ -5,12 +5,15 @@ a {
   color: #00b7ff;
 }
 #header-menu {
+  background: #fff;
+  opacity: 0.8;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   right: 0;
   display: block;
+  z-index: 10;
 }
 #header-menu #header-container {
   padding: 16px 60px;
