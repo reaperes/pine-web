@@ -26,7 +26,7 @@ a {
   overflow: hidden;
 }
 #header-container #bar-left-menu #bars {
-  background: #6a1be2;
+  background: #000;
   position: relative;
   width: 100%;
   height: 0.2em;
@@ -35,7 +35,7 @@ a {
 }
 #header-container #bar-left-menu #bars::before,
 #header-container #bar-left-menu #bars::after {
-  background: #6a1be2;
+  background: #000;
   width: 100%;
   height: 0.2em;
   position: absolute;
@@ -51,4 +51,9 @@ a {
 #header-container #title {
   text-align: center;
   font-size: 40px;
+}
+#header-container #bar-right-menu {
+  float: right;
+  margin-top: -40px;
+  cursor: pointer;
 }
