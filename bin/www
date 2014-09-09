@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+require('../global.js');
 var debug = require('debug')('pine-web');
-var app = require('../app');
+var app = require('../src/app');
 
 app.set('port', process.env.PORT || 3000);
 

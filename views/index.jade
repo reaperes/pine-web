@@ -2,23 +2,23 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='../public/stylesheets/reset.css')
-    link(rel='stylesheet', href='../public/stylesheets/style.css')
+    link(rel='stylesheet', href='stylesheets/reset.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
   body
     header#header-menu
-      div#header-container
+      #header-container
         a#bar-left-menu
           span#bars
-        div#title Pine
+        #title Pine
         a#bar-right-menu
-          img(src='../public/images/icon_settings.png')
+          img(src='images/icon_settings.png')
 
-    div#container
-      div#content
-        div.thread
-          span 11234123412341234134asdfasdfasdfasdfad
-        div.thread
-        div.thread
-        div.thread
-        div.thread
-        div.thread
+    #container
+      #content
+        - for (var i=0; i<maxId; i++)
+          .thread(id='thread_'+(maxId-i))
+            img
+            span
+
+  script(src='javascripts/jquery-1.11.1.js')
+  script(src='javascripts/script.js')

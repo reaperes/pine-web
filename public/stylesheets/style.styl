@@ -70,18 +70,25 @@ a
     display block
     font-size 0
 
-    div
-      font-size 21px
-
 .thread
-  background indianred
+  position relative
+  background whitesmoke
   width 229px
   height 229px
   display inline-block
 
+  img
+    position absolute
+    width 100%
+    height 100%
+    opacity 0
+    transition opacity .2s ease-in
+
   span
     position absolute
-    bottom 30px
-    word-break break-all
-    display inline
-    width 229px
+    bottom 0
+    padding 0 4px 4px 4px
+    word-wrap break-word
+    width 221px
+    font-size 14px
+    display block

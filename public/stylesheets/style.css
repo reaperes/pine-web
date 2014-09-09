@@ -71,19 +71,26 @@ a {
   display: block;
   font-size: 0;
 }
-#container #content div {
-  font-size: 21px;
-}
 .thread {
-  background: #cd5c5c;
+  position: relative;
+  background: #f5f5f5;
   width: 229px;
   height: 229px;
   display: inline-block;
 }
+.thread img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
 .thread span {
   position: absolute;
-  bottom: 30px;
-  word-break: break-all;
-  display: inline;
-  width: 229px;
+  bottom: 0;
+  padding: 0 4px 4px 4px;
+  word-wrap: break-word;
+  width: 221px;
+  font-size: 14px;
+  display: block;
 }
