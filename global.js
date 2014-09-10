@@ -11,4 +11,5 @@ DB = {
   PASSWORD: process.env.PASSWORD
 };
 
-BASE_IMAGE_URL = 'http://images.recover39.com/';
+IMAGE_BASE_URL = 'http://images.recover39.com/';
+API_BASE_URL = 'http://125.209.194.90:3000';
