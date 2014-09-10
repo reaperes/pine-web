@@ -32,8 +32,8 @@
 
 
 var IMAGE_BASE_URL = 'http://images.recover39.com/';
-var API_BASE_URL = 'http://125.209.194.90:3000';
-//var API_BASE_URL = 'http://localhost:3000';
+//var API_BASE_URL = 'http://125.209.194.90:3000';
+var API_BASE_URL = 'http://localhost:3000';
 
 
 $(".thread").appear(function () {
@@ -44,7 +44,8 @@ $(".thread").appear(function () {
     url: API_BASE_URL + '/threads/' + this['id'].slice(7),
     success: function (threadJson) {
       var elImg = _this.childNodes[0];
-      elImg.setAttribute('src', IMAGE_BASE_URL+threadJson['imageUrl']);
+      if (threadJson['imageUrl'] != '')
+        elImg.setAttribute('src', IMAGE_BASE_URL+threadJson['imageUrl']);
       elImg.style.opacity = 1;
 
       var elSpan = _this.childNodes[1];
