@@ -7,6 +7,10 @@ var pool = mysql.createConnection({
   database: 'pine'
 });
 
+pool.on('connection', function (connection) {
+  console.log('connection');
+});
+
 /**
  * @class ThreadService
  */
