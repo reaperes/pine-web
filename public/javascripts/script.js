@@ -32,8 +32,8 @@
 
 
 var IMAGE_BASE_URL = 'http://images.recover39.com/';
-var API_BASE_URL = 'http://125.209.194.90:3000';
-//var API_BASE_URL = 'http://localhost:3000';
+//var API_BASE_URL = 'http://125.209.194.90:3000';
+var API_BASE_URL = 'http://localhost:3000';
 
 $(".thread").appear(function () {
   var _this = this;
@@ -105,6 +105,10 @@ function last1WeekMenuActive() {
   var last1WeekTime = new Date().getTime() - 604800;  // 60 * 60 * 24 * 7
   $('.thread').each(function (index, element) {
     var pubTime = new Date($(this).data('pubdate')).getTime();
+
+    console.log(last1WeekTime);
+    console.log(pubTime);
+
     if (pubTime < last1WeekTime)
       fadeOutThread($(this));
   });
