@@ -32,8 +32,8 @@
 
 
 var IMAGE_BASE_URL = 'http://images.recover39.com/';
-//var API_BASE_URL = 'http://125.209.194.90:3000';
-var API_BASE_URL = 'http://localhost:3000';
+var API_BASE_URL = 'http://125.209.194.90:3000';
+//var API_BASE_URL = 'http://localhost:3000';
 
 $(".thread").appear(function () {
   var _this = this;
