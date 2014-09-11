@@ -107,7 +107,7 @@ function last1WeekMenuActive() {
     var pubTime = new Date($(this).data('pubdate')).getTime();
 
     console.log(last1WeekTime);
-    console.log(new Date($(this).data('pubdate')));
+    console.log(pubTime);
 
     if (pubTime < last1WeekTime)
       fadeOutThread($(this));
