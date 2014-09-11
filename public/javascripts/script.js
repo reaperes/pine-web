@@ -102,13 +102,9 @@ function last1WeekMenuActive() {
   menu.css({opacity:1});
   menu.addClass('Active');
 
-  var last1WeekTime = new Date().getTime() - 604800;  // 60 * 60 * 24 * 7
+  var last1WeekTime = new Date().getTime() - 604800000;  // 1000 * 60 * 60 * 24 * 7
   $('.thread').each(function (index, element) {
     var pubTime = new Date($(this).data('pubdate')).getTime();
-
-    console.log(last1WeekTime);
-    console.log(pubTime);
-
     if (pubTime < last1WeekTime)
       fadeOutThread($(this));
   });
