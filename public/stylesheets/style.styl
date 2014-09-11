@@ -1,9 +1,6 @@
 body
   font 14px "Lucida Grande", Helvetica, Arial, sans-serif
 
-a
-  color #00B7FF
-
 #header-menu
   background white
   opacity 0.8
@@ -69,6 +66,34 @@ a
     float left
     display block
     font-size 0
+
+#config-container
+  position fixed
+  top 80px
+  right 60px
+  width 120px
+  height 200px
+  visibility hidden
+  overflow hidden
+
+  #config-menus
+    position absolute
+    top -120px
+    font-size 14px
+    transition all 0.3s ease
+
+    a
+      display block
+      background indianred
+      opacity .4
+      cursor pointer
+      float left
+      width 100px
+      padding 10px
+
+  #config-menus.config-menus-active
+    top 0
+    visibility visible
 
 .thread
   position relative

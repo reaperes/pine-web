@@ -45,8 +45,8 @@ module.exports = {
       if (rows.length == 0) return callback(err, {});
       callback(err, {
         id: rows[0].id,
-        pubDate: rows[0].pub_date,
-        imageUrl: rows[0].image_url,
+        pub_date: rows[0].pub_date,
+        image_url: rows[0].image_url,
         content: rows[0].content
       });
     });
