@@ -4,7 +4,7 @@ var pool = mysql.createPool({
   host: DB.HOST,
   user: DB.USERNAME,
   password: DB.PASSWORD,
-  database: 'pine_pro'
+  database: DB.DATABASE
 });
 
 /**

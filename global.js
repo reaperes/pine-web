@@ -8,7 +8,8 @@ DB = {
   HOST: 'localhost',
   PORT: 3306,
   USERNAME: 'pine',
-  PASSWORD: process.env.PASSWORD
+  PASSWORD: process.env.PASSWORD,
+  DATABASE: 'pine'
 };
 
 IMAGE_BASE_URL = 'http://images.recover39.com/';
