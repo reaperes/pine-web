@@ -1,6 +1,6 @@
 var IMAGE_BASE_URL = 'http://images.recover39.com/';
-var API_BASE_URL = 'http://125.209.194.90:3000';
-//var API_BASE_URL = 'http://localhost:3000';
+//var API_BASE_URL = 'http://125.209.194.90:3000';
+var API_BASE_URL = 'http://localhost:3000';
 
 $(window).on('beforeunload', function() {
   $(window).scrollTop(0);
@@ -49,6 +49,14 @@ $(document).ready(function () {
         }
       });
     }
+  });
+
+  // left menu click
+  $('#bar-left-menu').click(function () {
+    $('body').toggleClass('active');
+    $('#header-menu').toggleClass('active');
+    $('#page-wrap').toggleClass('active');
+    $('#bars').toggleClass('active');
   });
 
   /**

@@ -1,6 +1,15 @@
 body
   font 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  overflow-x hidden
   overflow-y scroll
+
+body.active
+  overflow-y hidden
+
+#page-wrap
+  position relative
+  left 0
+  transition all 0.4s cubic-bezier(0.230, 1.000, 0.320, 1.000)
 
 #header-menu
   background white
@@ -12,16 +21,17 @@ body
   right 0
   display block
   z-index 10
+  transition all 0.4s cubic-bezier(0.230, 1.000, 0.320, 1.000)
 
   #header-container
     padding 16px 60px
     display block
 
     #bar-left-menu
-      position absolute
+      position fixed
       display block
       width 26px
-      height 20px
+      height 21px
       margin-top 14px
       cursor pointer
       overflow hidden
@@ -33,20 +43,35 @@ body
         height 0.2em
         display block
         margin-top 9px
+        transition all 0.1s ease
 
-      #bars::before, #bars::after
+      #bars:before, #bars:after
         background black
         width 100%
         height 0.2em
         position absolute
         left 0
         content ''
+        transition all 0.2s ease
+        /*transform rotate(0deg)*/
 
       #bars::before
         top -7px
 
       #bars::after
         top 7px
+
+      #bars.active
+        background transparent
+
+      #bars.active:before, #bars.active:after
+        top 0
+
+      #bars.active:before
+        transform rotate(-45deg)
+
+      #bars.active:after
+        transform rotate(45deg)
 
     #title
       text-align center
@@ -69,7 +94,7 @@ body
     font-size 0
 
 #config-container
-  position fixed
+  position relative
   top 80px
   right 60px
   width 120px
@@ -96,6 +121,12 @@ body
     top 0
     visibility visible
 
+#page-wrap.active
+  left 200px
+
+#header-menu.active
+  left 200px
+
 .thread
   position relative
   background whitesmoke
@@ -107,6 +138,7 @@ body
     position absolute
     width 100%
     height 100%
+    pointer-events: none
     transition opacity .2s ease-in
 
   span

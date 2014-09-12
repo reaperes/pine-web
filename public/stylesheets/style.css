@@ -1,6 +1,15 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
   overflow-y: scroll;
+}
+body.active {
+  overflow-y: hidden;
+}
+#page-wrap {
+  position: relative;
+  left: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 #header-menu {
   background: #fff;
@@ -12,16 +21,17 @@ body {
   right: 0;
   display: block;
   z-index: 10;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 #header-menu #header-container {
   padding: 16px 60px;
   display: block;
 }
 #header-menu #header-container #bar-left-menu {
-  position: absolute;
+  position: fixed;
   display: block;
   width: 26px;
-  height: 20px;
+  height: 21px;
   margin-top: 14px;
   cursor: pointer;
   overflow: hidden;
@@ -33,21 +43,37 @@ body {
   height: 0.2em;
   display: block;
   margin-top: 9px;
+  transition: all 0.1s ease;
 }
-#header-menu #header-container #bar-left-menu #bars::before,
-#header-menu #header-container #bar-left-menu #bars::after {
+#header-menu #header-container #bar-left-menu #bars:before,
+#header-menu #header-container #bar-left-menu #bars:after {
   background: #000;
   width: 100%;
   height: 0.2em;
   position: absolute;
   left: 0;
   content: '';
+  transition: all 0.2s ease;
+/*transform rotate(0deg)*/
 }
 #header-menu #header-container #bar-left-menu #bars::before {
   top: -7px;
 }
 #header-menu #header-container #bar-left-menu #bars::after {
   top: 7px;
+}
+#header-menu #header-container #bar-left-menu #bars.active {
+  background: transparent;
+}
+#header-menu #header-container #bar-left-menu #bars.active:before,
+#header-menu #header-container #bar-left-menu #bars.active:after {
+  top: 0;
+}
+#header-menu #header-container #bar-left-menu #bars.active:before {
+  transform: rotate(-45deg);
+}
+#header-menu #header-container #bar-left-menu #bars.active:after {
+  transform: rotate(45deg);
 }
 #header-menu #header-container #title {
   text-align: center;
@@ -70,7 +96,7 @@ body {
   font-size: 0;
 }
 #config-container {
-  position: fixed;
+  position: relative;
   top: 80px;
   right: 60px;
   width: 120px;
@@ -97,6 +123,12 @@ body {
   top: 0;
   visibility: visible;
 }
+#page-wrap.active {
+  left: 200px;
+}
+#header-menu.active {
+  left: 200px;
+}
 .thread {
   position: relative;
   background: #f5f5f5;
@@ -108,6 +140,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   transition: opacity 0.2s ease-in;
 }
 .thread span {
