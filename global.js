@@ -9,7 +9,7 @@ DB = {
   PORT: 3306,
   USERNAME: 'pine',
   PASSWORD: process.env.PASSWORD,
-  DATABASE: 'pine_pro'
+  DATABASE: 'pine'
 };
 
 IMAGE_BASE_URL = 'http://images.recover39.com/';
