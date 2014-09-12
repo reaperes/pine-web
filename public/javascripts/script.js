@@ -30,7 +30,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
     if(isNearBottom() && !isLoading && !isBottom) {
       isLoading = true;
-      var lastThreadId = $('#thread-container div:last-child').data('id');
+      var lastThreadId = $('#thread-container>div:last-child').data('id');
       if (lastThreadId == 1)
         isBottom = true;
 
