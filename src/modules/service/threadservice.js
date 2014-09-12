@@ -4,11 +4,7 @@ var pool = mysql.createPool({
   host: DB.HOST,
   user: DB.USERNAME,
   password: DB.PASSWORD,
-  database: 'pine'
-});
-
-pool.on('connection', function (connection) {
-  console.log('connection');
+  database: 'pine_pro'
 });
 
 /**
@@ -50,5 +46,33 @@ module.exports = {
         content: rows[0].content
       });
     });
+  },
+
+  /**
+   * @param count
+   * @param offset
+   * @param reverse if true, return older thread since offset
+   * @param callback err, threads array
+   */
+  getThreads: function (count, offset, reverse, callback) {
+    if (arguments.length != 4) throw new Error('Arguments does not match');
+
+    if (offset == 0 || typeof offset != 'number')
+      pool.query('select id, pub_date, image_url, content from pine_threads order by id desc' +
+        ' limit 0, ' + count , handleResultSet);
+    else {
+      if (reverse == true)
+        pool.query('select id, pub_date, image_url, content from pine_threads' +
+          ' where id < ' + offset + ' order by id desc limit 0, ' + count, handleResultSet);
+      else
+        pool.query('select id, pub_date, image_url, content from pine_threads where id > ' + offset +
+          ' order by id desc limit 0, ' + count, handleResultSet);
+    }
+
+    function handleResultSet(err, rows) {
+      if (err) return callback(err);
+      if (rows.length == 0) return callback(err, []);
+      return callback(err, rows);
+    }
   }
 };

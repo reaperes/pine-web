@@ -4,10 +4,24 @@ var router = express.Router();
 var ThreadService = require(SOURCE_ROOT + '/modules/service/threadservice');
 
 router.get('/', function(req, res) {
-  ThreadService.getLatestThreadId(function(err, maxId) {
-    res.render('index', {
-      maxId: maxId
-    });
+  res.render('index');
+});
+
+/**
+ * @param count
+ * @param offset
+ * @param reverse
+ */
+router.get('/threads', function(req, res) {
+  var params = req.query;
+
+  var count = params.count !== undefined ? parseInt(params.count) : 0;
+  var offset = params.offset !== undefined ? parseInt(params.offset) : 0;
+  var reverse = params.reverse !== undefined ? Boolean(params.reverse) : false;
+
+  ThreadService.getThreads(count, offset, reverse, function (err, threads) {
+    if (err) return res.send(err);
+    return res.send(threads);
   });
 });
 
