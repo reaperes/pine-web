@@ -7,6 +7,7 @@ $(window).on('beforeunload', function() {
 });
 
 $(document).ready(function () {
+  var isLeftMenuActive = false;
   var isLoading = true;
   var isBottom = false;
 
@@ -56,7 +57,9 @@ $(document).ready(function () {
     $('body').toggleClass('active');
     $('#header-menu').toggleClass('active');
     $('#page-wrap').toggleClass('active');
-    $('#bars').toggleClass('active');
+    setTimeout(function () {
+      $('#bars').toggleClass('active');
+    }, 199);
   });
 
   /**
