@@ -7,7 +7,6 @@ $(window).on('beforeunload', function() {
 });
 
 $(document).ready(function () {
-  var isLeftMenuActive = false;
   var isLoading = true;
   var isBottom = false;
 
@@ -72,6 +71,22 @@ $(document).ready(function () {
       'data-id': data['id'],
       'data-pubdate': data['pub_date']
     });
+    $div.click(function () {
+      var $this = $(this);
+      var $commentContainer = $this.children().last();
+      if (!$commentContainer.hasClass('comment-container')) {
+        getComments($this.data('id'), function (err, comments) {
+          var $container = $('<div/>', {
+            'class': 'comment-container active'
+          }).appendTo($this);
+          $.each(comments, function (index, commentData) {
+            creaetDivComment(commentData).appendTo($container);
+          });
+        });
+      }
+      $commentContainer.toggleClass('active');
+    });
+
     var $img = $('<img/>');
     if (data['image_url'] == '')
       $img.attr('src', 'images/img_no_img_thread.jpg');
@@ -87,10 +102,37 @@ $(document).ready(function () {
       else
         $img.attr('src', IMAGE_BASE_URL + data['image_url']);
     }
-    var $span = $('<span>' + data['content'] + '<span/>');
+    var $span = $('<span>').html(data['content']);
     $img.appendTo($div);
     $span.appendTo($div);
     $div.appendTo($('#thread-container'));
+  }
+
+  /**
+   * @param data comment data
+   * @return $div
+   */
+  function creaetDivComment(data) {
+    var $div = $('<div/>', {
+      'class': 'comment active',
+      'data-id': data['id'],
+      'data-pubdate': data['pub_date']
+    });
+    $('<span>').html(data['content']).appendTo($div);
+    return $div;
+  }
+
+  function getComments(threadId, callback) {
+    $.ajax({
+      type: 'GET',
+      url: API_BASE_URL + '/threads/' + threadId + '/comments',
+      success: function (datas, status) {
+        callback(null, datas);
+      },
+      error: function (e) {
+        console.error(e);
+      }
+    });
   }
 
   /**

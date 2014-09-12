@@ -136,18 +136,39 @@ body.active {
   height: 229px;
   display: inline-block;
 }
-.thread img {
+.thread >img {
   position: absolute;
   width: 100%;
   height: 100%;
   pointer-events: none;
   transition: opacity 0.2s ease-in;
 }
-.thread span {
+.thread >span {
   position: absolute;
   bottom: 0;
   padding: 0 4px 4px 4px;
   width: 221px;
   font-size: 14px;
   display: block;
+}
+.thread .comment-container {
+  background: #fff;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  top: 229px;
+  visibility: hidden;
+  z-index: 0;
+}
+.thread .comment-container .comment {
+  background: #ffb6c1;
+  padding: 4px;
+}
+.thread .comment-container .comment >span {
+  padding: 4px;
+  font-size: 14px;
+}
+.thread .comment-container.active {
+  visibility: visible;
+  z-index: 100;
 }

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var ThreadService = require(SOURCE_ROOT + '/modules/service/threadservice');
+var CommentService = require(SOURCE_ROOT + '/modules/service/commentservice');
+
 
 router.get('/', function(req, res) {
   res.render('index');
@@ -26,8 +28,14 @@ router.get('/threads', function(req, res) {
 });
 
 router.get('/threads/:id', function(req, res) {
-  ThreadService.getThreadJson(req.params.id, function(err, threadJson) {
+  ThreadService.getThreadJson(req.params.id, function (err, threadJson) {
     res.send(threadJson);
+  });
+});
+
+router.get('/threads/:id/comments', function (req, res) {
+  CommentService.getComments(req.params.id, function (err, comments) {
+    res.send(comments);
   });
 });
 

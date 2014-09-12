@@ -134,17 +134,38 @@ body.active
   height 229px
   display inline-block
 
-  img
+  >img
     position absolute
     width 100%
     height 100%
     pointer-events: none
     transition opacity .2s ease-in
 
-  span
+  >span
     position absolute
     bottom 0
     padding 0 4px 4px 4px
     width 221px
     font-size 14px
     display block
+
+  .comment-container
+    background white
+    opacity 1
+    position absolute
+    width 100%
+    top 229px
+    visibility hidden
+    z-index 0
+
+    .comment
+      background lightpink
+      padding 4px
+
+      >span
+        padding 4px
+        font-size 14px
+
+  .comment-container.active
+    visibility visible
+    z-index 100
