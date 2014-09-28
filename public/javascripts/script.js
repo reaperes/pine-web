@@ -66,10 +66,12 @@ $(document).ready(function () {
    * @param veil effect true or false
    */
   function addThreadInDiv(data, veil) {
+    // make thread container
     var $div = $('<div/>', {
       'class': 'thread',
       'data-id': data['id'],
-      'data-pubdate': data['pub_date']
+      'data-pubdate': data['pub_date'],
+      'data-like_count': data['like_count']
     });
     $div.click(function () {
       var $this = $(this);
@@ -87,6 +89,7 @@ $(document).ready(function () {
       $commentContainer.toggleClass('active');
     });
 
+    // make image
     var $img = $('<img/>');
     if (data['image_url'] == '')
       $img.attr('src', 'images/img_no_img_thread.jpg');
@@ -102,9 +105,49 @@ $(document).ready(function () {
       else
         $img.attr('src', IMAGE_BASE_URL + data['image_url']);
     }
+
+    // make content
     var $span = $('<span>').html(data['content']);
+
+    // make heart-container
+    var $divHeartContainer = $('<div/>').attr('id', 'heart-container');
+    $divHeartContainer.css({
+      position: 'absolute',
+      'background-color': 'rgba(255, 255, 255, 0.8)',
+      width: '36px',
+      height: '18px',
+      top: '0',
+      right: '0',
+      'border-radius': '2px',
+      margin: '1px'
+    });
+
+    var $like = $('<img/>');
+    $like.attr('src', 'images/heart.png');
+    $like.css({
+      width: '18px',
+      height: '18px',
+      float: 'left',
+      display: 'block'
+    });
+
+    var $like_count = $('<p/>');
+    $like_count.text(data['like_count']);
+    $like_count.css({
+      width: '18px',
+      height: '18px',
+      float: 'left',
+      'font-size': '12px',
+      'text-align': 'center',
+      'padding-top': '1px'
+    });
+
+    $like.appendTo($divHeartContainer);
+    $like_count.appendTo($divHeartContainer);
+
     $img.appendTo($div);
     $span.appendTo($div);
+    $divHeartContainer.appendTo($div);
     $div.appendTo($('#thread-container'));
   }
 

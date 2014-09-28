@@ -52,22 +52,31 @@ module.exports = {
    * @param count
    * @param offset
    * @param reverse if true, return older thread since offset
-   * @param callback err, threads array
+   * @param callback err, threads(id, pub_date, image_url, content, like_count) array
    */
   getThreads: function (count, offset, reverse, callback) {
     if (arguments.length != 4) throw new Error('Arguments does not match');
 
+    var getLatestQuery = 'SELECT threads.id id, threads.pub_date pub_date, threads.image_url image_url, threads.content content, COUNT(likes.id) AS like_count'
+                       + 'FROM pine_threads AS threads'
+                       + '  LEFT OUTER JOIN pine_threads_likes AS likes ON threads.id = likes.threads_id'
+                       + 'GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
+    var getOffsetReverseQuery = 'SELECT threads.id id, threads.pub_date pub_date, threads.image_url image_url, threads.content content, COUNT(likes.id) AS like_count'
+                              + 'FROM pine_threads AS threads'
+                              + '  LEFT OUTER JOIN pine_threads_likes AS likes ON threads.id = likes.threads_id'
+                              + 'WHERE threads.id < ' + offset + 'GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
+    var getOffsetQuery = 'SELECT threads.id id, threads.pub_date pub_date, threads.image_url image_url, threads.content content, COUNT(likes.id) AS like_count'
+                       + 'FROM pine_threads AS threads'
+                       + '  LEFT OUTER JOIN pine_threads_likes AS likes ON threads.id = likes.threads_id'
+                       + 'WHERE threads.id > ' + offset + 'GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
+
     if (offset == 0 || typeof offset != 'number')
-      pool.query('select id, pub_date, image_url, content from pine_threads order by id desc' +
-        ' limit 0, ' + count , handleResultSet);
-    else {
+      pool.query(getLatestQuery, handleResultSet);
+    else
       if (reverse == true)
-        pool.query('select id, pub_date, image_url, content from pine_threads' +
-          ' where id < ' + offset + ' order by id desc limit 0, ' + count, handleResultSet);
+        pool.query(getOffsetReverseQuery, handleResultSet);
       else
-        pool.query('select id, pub_date, image_url, content from pine_threads where id > ' + offset +
-          ' order by id desc limit 0, ' + count, handleResultSet);
-    }
+        pool.query(getOffsetQuery, handleResultSet);
 
     function handleResultSet(err, rows) {
       if (err) return callback(err);
