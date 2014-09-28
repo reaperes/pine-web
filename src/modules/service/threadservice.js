@@ -64,11 +64,11 @@ module.exports = {
     var getOffsetReverseQuery = 'SELECT threads.id id, threads.pub_date pub_date, threads.image_url image_url, threads.content content, COUNT(likes.id) AS like_count '
                               + 'FROM pine_threads AS threads '
                               + '  LEFT OUTER JOIN pine_threads_likes AS likes ON threads.id = likes.threads_id '
-                              + 'WHERE threads.id < ' + offset + 'GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
+                              + 'WHERE threads.id < ' + offset + ' GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
     var getOffsetQuery = 'SELECT threads.id id, threads.pub_date pub_date, threads.image_url image_url, threads.content content, COUNT(likes.id) AS like_count '
                        + 'FROM pine_threads AS threads '
                        + '  LEFT OUTER JOIN pine_threads_likes AS likes ON threads.id = likes.threads_id '
-                       + 'WHERE threads.id > ' + offset + 'GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
+                       + 'WHERE threads.id > ' + offset + ' GROUP BY threads.id ORDER BY threads.id DESC LIMIT 0, ' + count;
 
     if (offset == 0 || typeof offset != 'number')
       pool.query(getLatestQuery, handleResultSet);
